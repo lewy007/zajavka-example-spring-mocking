@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'pl.zajavka'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = "5.9.1"
+    mockitoVersion = "4.8.0"
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
