@@ -50,3 +50,30 @@ class ExampleBeanServiceImplTest {
     
 }
 ```
+
+### 2 commit
+### mockito stworzy samo zaślepkę, nie musimy tworzyc sami implementacji interfejsu z innym wynikiem, bo zrobi to za nas Mockito
+```java
+@ExtendWith(MockitoExtension.class)
+class ExampleBeanServiceImplTest {
+
+    @InjectMocks
+    private ExampleBeanServiceImpl exampleBeanService;
+
+    @Mock
+    private InjectedBeanService injectedBeanService;
+
+    @Test
+    void sampleMethod() {
+        // given
+        Mockito.when(injectedBeanService.anotherSampleMethod()).thenReturn(true);
+
+        //when
+        boolean result = exampleBeanService.sampleMethod();
+
+        //then
+        Assertions.assertEquals(true, result);
+    }
+    
+}
+```
