@@ -3,6 +3,7 @@ package pl.zajavka.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -24,13 +25,16 @@ class ExampleBeanServiceImplTest {
     @Test
     void sampleMethod() {
         // given
-        Mockito.when(injectedBeanService.anotherSampleMethod()).thenReturn(true);
+        Mockito.when(injectedBeanService.anotherSampleMethod(ArgumentMatchers.any())).thenReturn("my value");
 
         //when
-        boolean result = exampleBeanService.sampleMethod();
+        String result1 = exampleBeanService.sampleMethod(new Dog());
+        String resul2 = exampleBeanService.sampleMethod(new Dog());
+        String resul3 = exampleBeanService.sampleMethod(new Dog());
+        String result4 = exampleBeanService.sampleMethod(new Dog());
 
         //then
-        Assertions.assertEquals(true, result);
+        Assertions.assertEquals("my value", result1);
     }
 
 }

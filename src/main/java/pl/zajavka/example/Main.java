@@ -7,6 +7,6 @@ public class Main {
 
         exampleBeanService.setInjectedBeanService(injectedBeanService);
 
-        System.out.println(exampleBeanService.sampleMethod());
+        System.out.println(exampleBeanService.sampleMethod(new Dog()));
     }
 }

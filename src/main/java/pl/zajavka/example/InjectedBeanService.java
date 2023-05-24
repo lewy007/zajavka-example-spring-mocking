@@ -1,5 +1,5 @@
 package pl.zajavka.example;
 
 public interface InjectedBeanService {
-    boolean anotherSampleMethod();
+    String anotherSampleMethod(Dog someStringValue);
 }

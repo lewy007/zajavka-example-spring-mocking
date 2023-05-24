@@ -77,3 +77,33 @@ class ExampleBeanServiceImplTest {
     
 }
 ```
+
+### 3 commit
+argument matcher - jesli w metodzie pojawiaja sie jakies argumnety to stosujmey argument matcher
+```java
+@ExtendWith(MockitoExtension.class)
+class ExampleBeanServiceImplTest {
+
+    @InjectMocks
+    private ExampleBeanServiceImpl exampleBeanService;
+
+    @Mock
+    private InjectedBeanService injectedBeanService;
+
+    @Test
+    void sampleMethod() {
+        // given
+        Mockito.when(injectedBeanService.anotherSampleMethod(ArgumentMatchers.any())).thenReturn("my value");
+
+        //when
+        String result1 = exampleBeanService.sampleMethod(new Dog());
+        String resul2 = exampleBeanService.sampleMethod(new Dog());
+        String resul3 = exampleBeanService.sampleMethod(new Dog());
+        String result4 = exampleBeanService.sampleMethod(new Dog());
+
+        //then
+        Assertions.assertEquals("my value", result1);
+    }
+
+}
+```

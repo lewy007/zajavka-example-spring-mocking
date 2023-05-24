@@ -3,7 +3,7 @@ package pl.zajavka.example;
 public class InjectedBeanServiceImpl implements InjectedBeanService {
 
     @Override
-    public boolean anotherSampleMethod() {
-        return false;
+    public String anotherSampleMethod(Dog someValue) {
+        return "some Value: " + someValue;
     }
 }
