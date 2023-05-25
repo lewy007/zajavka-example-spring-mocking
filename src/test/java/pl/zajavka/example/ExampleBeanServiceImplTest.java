@@ -25,16 +25,23 @@ class ExampleBeanServiceImplTest {
     @Test
     void sampleMethod() {
         // given
-        Mockito.when(injectedBeanService.anotherSampleMethod(ArgumentMatchers.any())).thenReturn("my value");
-
+        Mockito.when(injectedBeanService.someOtherMethod())
+                .thenReturn("val1");
+        Mockito.when(injectedBeanService.anotherSampleMethod(ArgumentMatchers.any()))
+                .thenReturn("val2");
+//        Mockito
+//                .doReturn("my value")
+//                .when(injectedBeanService)
+//                .anotherSampleMethod(ArgumentMatchers.any());
         //when
         String result1 = exampleBeanService.sampleMethod(new Dog());
-        String resul2 = exampleBeanService.sampleMethod(new Dog());
-        String resul3 = exampleBeanService.sampleMethod(new Dog());
-        String result4 = exampleBeanService.sampleMethod(new Dog());
 
         //then
-        Assertions.assertEquals("my value", result1);
+        Assertions.assertEquals("val1val2", result1);
+
+        Mockito.verify(injectedBeanService, Mockito.times(1)).someOtherMethod();
+        Mockito.verify(injectedBeanService, Mockito.times(1))
+                .anotherSampleMethod(ArgumentMatchers.any());
     }
 
 }

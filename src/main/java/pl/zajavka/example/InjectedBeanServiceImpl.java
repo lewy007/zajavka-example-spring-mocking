@@ -6,4 +6,9 @@ public class InjectedBeanServiceImpl implements InjectedBeanService {
     public String anotherSampleMethod(Dog someValue) {
         return "some Value: " + someValue;
     }
+
+    @Override
+    public String someOtherMethod() {
+        return "some other value";
+    }
 }
